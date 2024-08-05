@@ -2,6 +2,8 @@ import 'package:dummy/columns_page.dart';
 import 'package:dummy/gesture_page.dart';
 import 'package:dummy/grid_veiw_page.dart';
 import 'package:dummy/list_view_page.dart';
+import 'package:dummy/log_out_page.dart';
+import 'package:dummy/sign_up_page.dart';
 import 'package:dummy/stack_page.dart';
 import 'package:flutter/material.dart';
 import 'endless_scroll.dart';
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
         "/list_view_page": (context) => ListViewPage(),
 
       },
-      home: MyHomePage(),
+      home: SignUpPage(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:dummy/columns_page.dart';
 import 'package:dummy/gesture_page.dart';
 import 'package:dummy/grid_veiw_page.dart';
+import 'package:dummy/log_out_page.dart';
 import 'package:dummy/page_one.dart';
 import 'package:dummy/page_two.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,9 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _pageIndex = index;
     });
+  }
+  void logOut() {
+    showDialog(context: context, builder: (context) => LogOutPopUp());
   }
   @override
   Widget build(BuildContext context) {
@@ -56,8 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             onPressed: () {
               //Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ColumnsPage()));
+              logOut();
             },
             icon: const Icon(
               Icons.logout,
