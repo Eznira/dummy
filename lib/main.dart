@@ -1,18 +1,22 @@
-import 'package:dummy/columns_page.dart';
-import 'package:dummy/gesture_page.dart';
-import 'package:dummy/grid_veiw_page.dart';
-import 'package:dummy/list_view_page.dart';
-import 'package:dummy/log_out_page.dart';
-import 'package:dummy/sign_up_page.dart';
-import 'package:dummy/stack_page.dart';
+import 'package:dummy/firebase_options.dart';
+import 'package:dummy/screens/columns_page.dart';
+import 'package:dummy/screens/home_page.dart';
+import 'package:dummy/screens/list_view_page.dart';
+import 'package:dummy/screens/sign_up_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'endless_scroll.dart';
-import 'home_page.dart';
 
+Future<void> main() async {
+  // Enable async in flutter
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
+  // initialize firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -26,12 +30,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        "/home": (context) => MyHomePage(),
-        "/columns_page": (context) => ColumnsPage(),
+        "/home": (context) => const MyHomePage(),
+        "/columns_page": (context) => const ColumnsPage(),
         "/list_view_page": (context) => ListViewPage(),
-
       },
-      home: SignUpPage(),
+      home: const SignUpPage(),
     );
   }
 }

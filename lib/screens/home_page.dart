@@ -1,10 +1,9 @@
-import 'package:dummy/columns_page.dart';
-import 'package:dummy/gesture_page.dart';
-import 'package:dummy/grid_veiw_page.dart';
-import 'package:dummy/log_out_page.dart';
-import 'package:dummy/page_one.dart';
-import 'package:dummy/page_two.dart';
+import 'package:dummy/screens/gesture_page.dart';
+import 'package:dummy/screens/grid_veiw_page.dart';
+import 'package:dummy/screens/page_one.dart';
 import 'package:flutter/material.dart';
+
+import 'log_out_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -14,10 +13,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   int _pageIndex = 0;
   final List<Widget> _pages = [
-    PageOne(),
+    const PageOne(),
     GridVeiwPage(),
     GesturePage(),
   ];
@@ -26,19 +24,23 @@ class _MyHomePageState extends State<MyHomePage> {
       _pageIndex = index;
     });
   }
+
   void logOut() {
     showDialog(context: context, builder: (context) => LogOutPopUp());
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageIndex,
         backgroundColor: Colors.deepPurple[200],
         onTap: _navigatePages,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Grid",),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Grid",
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.grid_3x3), label: "Grid"),
           BottomNavigationBarItem(icon: Icon(Icons.gesture), label: "Grid"),
         ],
@@ -89,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.deepPurple[700],
                 size: 30,
               ),
-              title: Text(
+              title: const Text(
                 "H O M E",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -107,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.deepPurple[700],
                 size: 30,
               ),
-              title: Text(
+              title: const Text(
                 "S E T T I N G S",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
