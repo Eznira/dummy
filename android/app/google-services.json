@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1726906151",
+    "project_id": "dummy-auth-3bbb6",
+    "storage_bucket": "dummy-auth-3bbb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1726906151:android:690c3731e9927220413302",
+        "android_client_info": {
+          "package_name": "com.arinze.dummyapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEu4fb0VSbEFIRKunvBO_WYtsmJEi7Gmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1726906151:android:e0163e340a4d0ff6413302",
+        "android_client_info": {
+          "package_name": "com.eznira.dummy_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEu4fb0VSbEFIRKunvBO_WYtsmJEi7Gmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
