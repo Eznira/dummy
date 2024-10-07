@@ -1,9 +1,8 @@
 import 'package:dummy/screens/gesture_page.dart';
 import 'package:dummy/screens/grid_veiw_page.dart';
 import 'package:dummy/screens/page_one.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'log_out_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -26,7 +25,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void logOut() {
-    showDialog(context: context, builder: (context) => LogOutPopUp());
+    // showDialog(context: context, builder: (context) => LogOutPopUp());
+
+    FirebaseAuth.instance.signOut();
   }
 
   @override

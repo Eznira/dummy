@@ -3,18 +3,21 @@ import 'package:flutter/material.dart';
 class CustomTextFeild extends StatelessWidget {
   CustomTextFeild({
     super.key,
+    required this.controller,
     required this.hintText,
     this.obsureText,
   });
 
   final String? hintText;
   final bool? obsureText;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+      padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
       child: TextField(
+        controller: controller,
         obscureText: obsureText ?? false,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(

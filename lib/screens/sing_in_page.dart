@@ -4,65 +4,63 @@ import 'package:flutter/material.dart';
 import '../components/custom_buttons.dart';
 import '../components/custom_text_field.dart';
 
-class SignUpPage extends StatefulWidget {
-  SignUpPage({
-    super.key,
-    required this.onTap,
-  });
+class SignInPage extends StatefulWidget {
+  SignInPage({super.key, required this.onTap});
 
-  void Function() onTap;
+  VoidCallback onTap;
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignInPageState extends State<SignInPage> {
   final email = TextEditingController();
   final password = TextEditingController();
-  final confirmPassword = TextEditingController();
 
-  Future<void> _signUp() async {
-    // Confirm password
-    if (password.text != confirmPassword.text) {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return const Dialog(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text('Mismatching Passwords!'),
-              ),
-            );
-          });
-      return;
-    }
+  // Future<void> _signIn() async {
+  //   try {
+  //     print("Before attempting authentication");
+  //     Auth.signInWithEmail(email.text, password.text);
+  //   } on AuthException catch (e) {
+  //     handleSignInError(e);
+  //   }
+  // }
+  Future<void> _signIn() async {
+    // show loading sign
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        });
 
-    // create new user from email and password
+    // attempt signing in
     try {
-      FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email.text, password: password.text);
-    } on FirebaseAuthException catch (e) {
-      handleSignUpError(e);
-    }
-
-    //attempt sign-in
-    try {
-      FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email.text,
         password: password.text,
       );
     } on FirebaseAuthException catch (e) {
-      handleSignUpError(e);
+      // pop loading sign
+      Navigator.pop(context);
+
+      // handle error
+      handleSignInError(e);
     }
+
+    // pop out loading circle
+    Navigator.pop(context);
   }
 
-  void handleSignUpError(FirebaseAuthException e) {
+  void handleSignInError(FirebaseAuthException e) {
     showDialog(
         context: context,
         builder: (context) {
           return Dialog(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: Text(e.code),
             ),
           );
@@ -93,14 +91,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       color: Colors.deepPurple),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 40,
                 ),
                 const Icon(
                   Icons.lock,
-                  size: 100,
+                  size: 150,
                 ),
                 Text(
-                  "Sign Up to get started!",
+                  "Sign In!",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -113,11 +111,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 CustomTextFeild(
                   hintText: "Password",
                   controller: password,
-                  obsureText: true,
-                ),
-                CustomTextFeild(
-                  hintText: "Confirm Password",
-                  controller: confirmPassword,
                   obsureText: true,
                 ),
                 Padding(
@@ -141,8 +134,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: CustomRectButton(
-                    title: 'Sign Up',
-                    onTap: _signUp,
+                    title: 'Sign In',
+                    onTap: _signIn,
                   ),
                 ),
                 const SizedBox(
@@ -171,10 +164,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Have an account?"),
+                    const Text("Not a members?"),
                     TextButton(
                       onPressed: widget.onTap,
-                      child: Text("Sign In"),
+                      child: const Text("Register"),
                     ),
                   ],
                 ),

@@ -46,25 +46,29 @@ class _SquareButtonState extends State<SquareButton> {
   }
 }
 
-class SignUpButton extends StatelessWidget {
-  SignUpButton({super.key, required this.onTap});
+class CustomRectButton extends StatelessWidget {
+  CustomRectButton({
+    super.key,
+    required this.onTap,
+    required this.title,
+  });
+
+  final String title;
   void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, "/home");
-      },
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.circular(12),
         ),
         height: 40,
-        child: const Center(
+        child: Center(
           child: Text(
-            "SignUp",
+            title,
             style: TextStyle(color: Colors.white),
           ),
         ),

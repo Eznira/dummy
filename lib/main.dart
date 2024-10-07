@@ -1,8 +1,8 @@
+import 'package:dummy/auth/auth_page.dart';
 import 'package:dummy/firebase_options.dart';
 import 'package:dummy/screens/columns_page.dart';
 import 'package:dummy/screens/home_page.dart';
 import 'package:dummy/screens/list_view_page.dart';
-import 'package:dummy/screens/sign_up_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         "/columns_page": (context) => const ColumnsPage(),
         "/list_view_page": (context) => ListViewPage(),
       },
-      home: const SignUpPage(),
+      home: const AuthPage(),
     );
   }
 }
